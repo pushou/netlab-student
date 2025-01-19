@@ -1,0 +1,32 @@
+a1 {
+  label: "a1 [frr]\n10.0.0.1/32"
+  shape: "oval"
+  style.font-size: 20
+}
+a2 {
+  label: "a2 [frr]\n10.0.0.2/32"
+  shape: "oval"
+  style.font-size: 20
+}
+s1 {
+  label: "s1 [frr]\n10.0.0.3/32"
+  shape: "oval"
+  style.font-size: 20
+}
+s2 {
+  label: "s2 [frr]\n10.0.0.4/32"
+  shape: "oval"
+  style.font-size: 20
+}
+a1 -- a2 {
+}
+a1 -- s1 {
+}
+a1 -- s2 {
+}
+a2 -- s1 {
+}
+a2 -- s2 {
+}
+s1 -- s2 {
+}

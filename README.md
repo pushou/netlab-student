@@ -1,1 +1,2 @@
-# netlab-student
+# demo for students 1y networking
+# don't expect evpn...
