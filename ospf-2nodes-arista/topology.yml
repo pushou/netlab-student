@@ -1,0 +1,28 @@
+message:
+  simple 2 nodes OSPF.
+
+module: [ ospf,ripv2 ]
+defaults.device: eos
+provider: clab
+defaults.providers.clab.bridge_type: ovs-bridge
+
+nodes:
+  ceos1:
+    image: registry.iutbeziers.fr/ceos:4.33.1F
+    module: [ ospf, ripv2 ]
+    ospf.area: 0
+  ceos2:
+    image: registry.iutbeziers.fr/ceos:4.33.1F
+    module: [ ospf, ripv2 ]
+    ospf.area: 0
+  linux1:
+    device: linux
+    image: wbitt/network-multitool:latest
+  linux2:
+    device: linux
+    image: wbitt/network-multitool:latest
+
+links:
+- ceos1-ceos2
+- ceos1-linux1
+- ceos2-linux2

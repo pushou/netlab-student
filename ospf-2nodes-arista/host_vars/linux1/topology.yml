@@ -1,0 +1,59 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-2nodes-arista/topology.yml', 'package:topology-defaults.yml']
+#
+
+%YAML 1.1
+---
+interfaces:
+- ipv4: 172.16.0.3/24
+  bridge: ospf_2node_2
+  type: lan
+  role: stub
+  linkindex: 2
+  name: linux1 -> ceos1
+  ifindex: 1
+  ifname: eth1
+  mtu: 1500
+  neighbors:
+  - ifname: Ethernet2
+    node: ceos1
+    ipv4: 172.16.0.1/24
+  gateway:
+    ipv4: 172.16.0.1/24
+clab:
+  kind: linux
+  config_templates:
+  - hosts:/etc/hosts
+  binds:
+  - clab_files/linux1/hosts:/etc/hosts
+box: wbitt/network-multitool:latest
+role: host
+mtu: 1500
+af:
+  ipv4: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.103
+  mac: 08:4f:a9:00:00:03
+hostname: clab-ospf_2nodes_-linux1
+routing:
+  static:
+  - ipv4: 172.16.0.0/16
+    nexthop:
+      ipv4: 172.16.0.1
+      intf: eth1
+      idx: 0
+  - ipv4: 10.0.0.0/24
+    nexthop:
+      ipv4: 172.16.0.1
+      intf: eth1
+      idx: 0
+  - ipv4: 10.1.0.0/16
+    nexthop:
+      ipv4: 172.16.0.1
+      intf: eth1
+      idx: 0
+  - ipv4: 10.2.0.0/24
+    nexthop:
+      ipv4: 172.16.0.1
+      intf: eth1
+      idx: 0

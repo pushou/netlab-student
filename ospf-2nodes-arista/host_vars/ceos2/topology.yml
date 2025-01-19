@@ -1,0 +1,81 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-2nodes-arista/topology.yml', 'package:topology-defaults.yml']
+#
+
+%YAML 1.1
+---
+module:
+- ospf
+- ripv2
+ospf:
+  area: 0.0.0.0
+  router_id: 10.0.0.2
+  af:
+    ipv4: true
+interfaces:
+- ipv4: 10.1.0.2/30
+  type: p2p
+  linkindex: 1
+  name: ceos2 -> ceos1
+  ifindex: 1
+  ifname: Ethernet1
+  clab:
+    name: et1
+  neighbors:
+  - ifname: Ethernet1
+    node: ceos1
+    ipv4: 10.1.0.1/30
+  ospf:
+    area: 0.0.0.0
+    passive: false
+    network_type: point-to-point
+  ripv2:
+    passive: false
+- ipv4: 172.16.1.2/24
+  bridge: ospf_2node_3
+  type: lan
+  role: stub
+  linkindex: 3
+  name: ceos2 -> linux2
+  ifindex: 2
+  ifname: Ethernet2
+  clab:
+    name: et2
+  neighbors:
+  - ifname: eth1
+    node: linux2
+    ipv4: 172.16.1.4/24
+  ospf:
+    area: 0.0.0.0
+    passive: true
+    network_type: point-to-point
+  ripv2:
+    passive: true
+clab:
+  kind: ceos
+  env:
+    INTFTYPE: et
+    CLAB_MGMT_VRF: management
+box: registry.iutbeziers.fr/ceos:4.33.1F
+ripv2:
+  version: 2
+  router_id: 10.0.0.2
+  af:
+    ipv4: true
+af:
+  ipv4: true
+loopback:
+  type: loopback
+  neighbors: []
+  virtual_interface: true
+  ifindex: 0
+  ifname: Loopback0
+  ipv4: 10.0.0.2/32
+  ospf:
+    area: 0.0.0.0
+  ripv2:
+    passive: false
+mgmt:
+  ifname: Management0
+  ipv4: 192.168.121.102
+  mac: 08:4f:a9:00:00:02
+hostname: clab-ospf_2nodes_-ceos2

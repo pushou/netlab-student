@@ -1,0 +1,38 @@
+ceos1 {
+  label: "ceos1 [eos]\n10.0.0.1/32"
+  shape: "hexagon"
+  style.font-size: 20
+}
+ceos2 {
+  label: "ceos2 [eos]\n10.0.0.2/32"
+  shape: "hexagon"
+  style.font-size: 20
+}
+linux1 {
+  label: "linux1 [linux]\n172.16.0.3/24"
+}
+linux2 {
+  label: "linux2 [linux]\n172.16.1.4/24"
+}
+ceos1 -- ceos2 {
+}
+lan_2 {
+  label: 172.16.0.0/24
+  shape: "rectangle"
+  style.border-radius: 8
+  style.font-size: 20
+}
+ceos1 -> lan_2 {
+}
+linux1 -> lan_2 {
+}
+lan_3 {
+  label: 172.16.1.0/24
+  shape: "rectangle"
+  style.border-radius: 8
+  style.font-size: 20
+}
+ceos2 -> lan_3 {
+}
+linux2 -> lan_3 {
+}
