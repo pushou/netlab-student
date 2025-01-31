@@ -1,0 +1,35 @@
+
+nodes:
+  s1:
+    image: registry.iutbeziers.fr/ceos:4.33.1F
+    module: [ ospf ]
+  s2:
+    image: registry.iutbeziers.fr/ceos:4.33.1F
+    module: [ ospf ]
+  h1:
+  h2:
+  h3:
+  h4:
+
+provider: clab
+defaults.providers.clab.bridge_type: ovs-bridge
+
+
+groups:
+  switches:
+    members: [ s1, s2 ]
+    module: [ vlan, ospf ]
+    device: eos
+  hosts:
+    members: [ h1, h2, h3, h4 ]
+    device: linux
+
+vlans:
+  blue_a:
+    links: [ s1-h1, s1-h2 ]
+    id: 100
+  blue_b:
+    links: [ s2-h3, s2-h4 ]
+    id: 100
+
+links: [ s1-s2 ]

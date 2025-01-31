@@ -1,0 +1,62 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-vlan/topology.yml', 'package:topology-defaults.yml']
+#
+
+%YAML 1.1
+---
+interfaces:
+- ipv4: 172.16.1.5/24
+  linkindex: 4
+  bridge: ospf_vlan_4
+  type: lan
+  name: h3 -> [s2,h4]
+  ifindex: 1
+  ifname: eth1
+  mtu: 1500
+  neighbors:
+  - ifname: Vlan100
+    node: s2
+    ipv4: 172.16.1.2/24
+  - ifname: eth1
+    node: h4
+    ipv4: 172.16.1.6/24
+  gateway:
+    ipv4: 172.16.1.2/24
+  role: stub
+clab:
+  kind: linux
+  config_templates:
+  - hosts:/etc/hosts
+  binds:
+  - clab_files/h3/hosts:/etc/hosts
+box: python:3.9-alpine
+role: host
+mtu: 1500
+af:
+  ipv4: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.105
+  mac: 08:4f:a9:00:00:05
+hostname: clab-ospf_vlan-h3
+routing:
+  static:
+  - ipv4: 172.16.0.0/16
+    nexthop:
+      ipv4: 172.16.1.2
+      intf: eth1
+      idx: 0
+  - ipv4: 10.0.0.0/24
+    nexthop:
+      ipv4: 172.16.1.2
+      intf: eth1
+      idx: 0
+  - ipv4: 10.1.0.0/16
+    nexthop:
+      ipv4: 172.16.1.2
+      intf: eth1
+      idx: 0
+  - ipv4: 10.2.0.0/24
+    nexthop:
+      ipv4: 172.16.1.2
+      intf: eth1
+      idx: 0

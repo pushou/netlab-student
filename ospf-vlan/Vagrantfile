@@ -1,0 +1,212 @@
+VAGRANT_COMMAND = ARGV[0]
+
+Vagrant.configure("2") do |config|
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.management_network_address = "192.168.121.0/24"
+    libvirt.default_prefix = "ospf_vlan_"
+  end
+  vm_name = "s1"
+  config.vm.define vm_name do |s1|
+    s1.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:01"
+      domain.qemu_use_session = false
+    end
+    s1.vm.box = "arista/veos"
+    s1.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+    s1.ssh.insert_key = false
+    s1.ssh.shell = "bash"
+    s1.vm.guest = :freebsd
+
+    s1.vm.provider :libvirt do |domain|
+      domain.disk_bus = 'ide'
+      domain.cpus = 2
+      domain.memory = 2048
+      domain.driver = "kvm"
+    end
+    s1.vm.provider :libvirt do |domain|
+    end
+
+    s1.vm.network :private_network,
+                  :libvirt__tunnel_type => "udp",
+                  :libvirt__tunnel_local_ip => "127.1.1.1",
+                  :libvirt__tunnel_local_port => "10001",
+                  :libvirt__tunnel_ip => "127.1.1.2",
+                  :libvirt__tunnel_port => "10001",
+                  :libvirt__iface_name => "vgif_s1_1",
+                  auto_config: false
+    s1.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_2",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_s1_2",
+                  :autostart => true,
+                  :auto_config => false
+    s1.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_3",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_s1_3",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+  vm_name = "s2"
+  config.vm.define vm_name do |s2|
+    s2.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:02"
+      domain.qemu_use_session = false
+    end
+    s2.vm.box = "arista/veos"
+    s2.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+    s2.ssh.insert_key = false
+    s2.ssh.shell = "bash"
+    s2.vm.guest = :freebsd
+
+    s2.vm.provider :libvirt do |domain|
+      domain.disk_bus = 'ide'
+      domain.cpus = 2
+      domain.memory = 2048
+      domain.driver = "kvm"
+    end
+    s2.vm.provider :libvirt do |domain|
+    end
+
+    s2.vm.network :private_network,
+                  :libvirt__tunnel_type => "udp",
+                  :libvirt__tunnel_local_ip => "127.1.1.2",
+                  :libvirt__tunnel_local_port => "10001",
+                  :libvirt__tunnel_ip => "127.1.1.1",
+                  :libvirt__tunnel_port => "10001",
+                  :libvirt__iface_name => "vgif_s2_1",
+                  auto_config: false
+    s2.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_4",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_s2_2",
+                  :autostart => true,
+                  :auto_config => false
+    s2.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_5",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_s2_3",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+  vm_name = "h1"
+  config.vm.define vm_name do |h1|
+    h1.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:03"
+      domain.qemu_use_session = false
+    end
+    h1.vm.box = "generic/ubuntu2004"
+    h1.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+
+    h1.vm.provider :libvirt do |domain|
+      domain.cpus = 1
+      domain.memory = 1024
+    end
+    h1.vm.provider :libvirt do |domain|
+    end
+
+    h1.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_2",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_h1_1",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+  vm_name = "h2"
+  config.vm.define vm_name do |h2|
+    h2.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:04"
+      domain.qemu_use_session = false
+    end
+    h2.vm.box = "generic/ubuntu2004"
+    h2.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+
+    h2.vm.provider :libvirt do |domain|
+      domain.cpus = 1
+      domain.memory = 1024
+    end
+    h2.vm.provider :libvirt do |domain|
+    end
+
+    h2.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_3",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_h2_1",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+  vm_name = "h3"
+  config.vm.define vm_name do |h3|
+    h3.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:05"
+      domain.qemu_use_session = false
+    end
+    h3.vm.box = "generic/ubuntu2004"
+    h3.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+
+    h3.vm.provider :libvirt do |domain|
+      domain.cpus = 1
+      domain.memory = 1024
+    end
+    h3.vm.provider :libvirt do |domain|
+    end
+
+    h3.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_4",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_h3_1",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+  vm_name = "h4"
+  config.vm.define vm_name do |h4|
+    h4.vm.provider :libvirt do |domain|
+      domain.management_network_mac = "08:4f:a9:00:00:06"
+      domain.qemu_use_session = false
+    end
+    h4.vm.box = "generic/ubuntu2004"
+    h4.vm.synced_folder ".", "/vagrant", id: "vagrant-root", disabled: true
+
+    h4.vm.provider :libvirt do |domain|
+      domain.cpus = 1
+      domain.memory = 1024
+    end
+    h4.vm.provider :libvirt do |domain|
+    end
+
+    h4.vm.network :private_network,
+
+                  :libvirt__network_name => "ospf_vlan_5",
+                  :libvirt__forward_mode => "veryisolated",
+                  :libvirt__dhcp_enabled => false,
+                  :libvirt__iface_name => "vgif_h4_1",
+                  :autostart => true,
+                  :auto_config => false
+
+  
+  end
+end

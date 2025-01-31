@@ -1,0 +1,77 @@
+name: ospf_vlan
+prefix: "clab"
+
+mgmt:
+  network: netlab_mgmt
+  ipv4-subnet: 192.168.121.0/24
+  # Note: 'start' not validated
+topology:
+  nodes:
+    s1:
+      mgmt-ipv4: 192.168.121.101
+      kind: ceos
+      env: {'INTFTYPE': 'et', 'CLAB_MGMT_VRF': 'management'}
+      image: registry.iutbeziers.fr/ceos:4.33.1F
+      runtime: docker
+      group: switches
+    s2:
+      mgmt-ipv4: 192.168.121.102
+      kind: ceos
+      env: {'INTFTYPE': 'et', 'CLAB_MGMT_VRF': 'management'}
+      image: registry.iutbeziers.fr/ceos:4.33.1F
+      runtime: docker
+      group: switches
+    h1:
+      mgmt-ipv4: 192.168.121.103
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: hosts
+      binds:
+      - clab_files/h1/hosts:/etc/hosts
+    h2:
+      mgmt-ipv4: 192.168.121.104
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: hosts
+      binds:
+      - clab_files/h2/hosts:/etc/hosts
+    h3:
+      mgmt-ipv4: 192.168.121.105
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: hosts
+      binds:
+      - clab_files/h3/hosts:/etc/hosts
+    h4:
+      mgmt-ipv4: 192.168.121.106
+      kind: linux
+      restart-policy: 'no'
+      image: python:3.9-alpine
+      runtime: docker
+      group: hosts
+      binds:
+      - clab_files/h4/hosts:/etc/hosts
+
+
+  links:
+  - endpoints:
+    - "s1:et1"
+    - "s2:et1"
+  - endpoints:
+    - "s1:et2"
+    - "h1:eth1"
+  - endpoints:
+    - "s1:et3"
+    - "h2:eth1"
+  - endpoints:
+    - "s2:et2"
+    - "h3:eth1"
+  - endpoints:
+    - "s2:et3"
+    - "h4:eth1"

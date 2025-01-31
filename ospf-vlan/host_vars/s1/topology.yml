@@ -1,0 +1,113 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-vlan/topology.yml', 'package:topology-defaults.yml']
+#
+
+%YAML 1.1
+---
+module:
+- vlan
+- ospf
+interfaces:
+- ipv4: 10.1.0.1/30
+  linkindex: 1
+  type: p2p
+  name: s1 -> s2
+  ifindex: 1
+  ifname: Ethernet1
+  clab:
+    name: et1
+  neighbors:
+  - ifname: Ethernet1
+    node: s2
+    ipv4: 10.1.0.2/30
+  ospf:
+    area: 0.0.0.0
+    passive: false
+    network_type: point-to-point
+- vlan:
+    access: blue_a
+    access_id: 100
+  linkindex: 2
+  bridge: ospf_vlan_2
+  type: lan
+  ifindex: 2
+  ifname: Ethernet2
+  clab:
+    name: et2
+  neighbors:
+  - ifname: eth1
+    node: h1
+    ipv4: 172.16.0.3/24
+  name: '[Access VLAN blue_a] s1 -> h1'
+- vlan:
+    access: blue_a
+    access_id: 100
+  linkindex: 3
+  bridge: ospf_vlan_3
+  type: lan
+  ifindex: 3
+  ifname: Ethernet3
+  clab:
+    name: et3
+  neighbors:
+  - ifname: eth1
+    node: h2
+    ipv4: 172.16.0.4/24
+  name: '[Access VLAN blue_a] s1 -> h2'
+- ipv4: 172.16.0.1/24
+  vlan:
+    mode: irb
+    name: blue_a
+  type: svi
+  ifindex: 40000
+  ifname: Vlan100
+  name: VLAN blue_a (100) -> [h1,h2]
+  virtual_interface: true
+  neighbors:
+  - ifname: eth1
+    node: h1
+    ipv4: 172.16.0.3/24
+  - ifname: eth1
+    node: h2
+    ipv4: 172.16.0.4/24
+  bridge_group: 1
+  role: stub
+  ospf:
+    area: 0.0.0.0
+    passive: true
+clab:
+  kind: ceos
+  env:
+    INTFTYPE: et
+    CLAB_MGMT_VRF: management
+box: registry.iutbeziers.fr/ceos:4.33.1F
+ospf:
+  area: 0.0.0.0
+  router_id: 10.0.0.1
+  af:
+    ipv4: true
+af:
+  ipv4: true
+loopback:
+  type: loopback
+  neighbors: []
+  virtual_interface: true
+  ifindex: 0
+  ifname: Loopback0
+  ipv4: 10.0.0.1/32
+  ospf:
+    area: 0.0.0.0
+mgmt:
+  ifname: Management0
+  ipv4: 192.168.121.101
+  mac: 08:4f:a9:00:00:01
+hostname: clab-ospf_vlan-s1
+vlans:
+  blue_a:
+    id: 100
+    prefix:
+      ipv4: 172.16.0.0/24
+      allocation: id_based
+    mode: irb
+    bridge_group: 1
+vlan:
+  max_bridge_group: 1
