@@ -1,3 +1,6 @@
+tools:
+  graphite:
+    #  suzieq:
 
 nodes:
   s1:
