@@ -1,0 +1,12 @@
+---
+sources:
+
+- name: ansible-01
+  type: ansible
+  path: /suzieq/ansible.json
+
+devices:
+- name: ignore-known-hosts
+  ignore-known-hosts: true
+  transport: ssh
+

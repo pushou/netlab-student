@@ -3855,6 +3855,9 @@ defaults:
         You
         can also specify the global AS used by EVPN in 'vrf.as' parameter if you use
         VRFs, or in 'evpn.as' parameter if you use EVPN in bridging-only scenarios.
+    bgp:
+      igp: >
+        Add a supported IGP (ospf, isis, eigrp) to the list of modules.
     report:
       source: >
         A report can be specified in a file with .j2 suffix within 'reports' subdirectory
@@ -3926,16 +3929,16 @@ defaults:
       command_args: -l -v
   paths:
     validate:
-    - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/validate
+    - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/validate
     plugin:
-    - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp
+    - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr
     - /home/pouchou/.netlab
-    - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/extra
+    - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/extra
     custom:
       dirs:
-      - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp
+      - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr
       - /home/pouchou/.netlab
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/extra
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/extra
       files:
       - "{{ custom_config + '/' + inventory_hostname + '.' + netlab_device_type +
         '-' + node_provider + '.j2' }}"
@@ -3967,7 +3970,7 @@ defaults:
       - '{{ custom_config }}/deploy.yml'
     deploy:
       dirs:
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks
       tasks_generic:
       - deploy-config/{{ netlab_device_type }}-{{ node_provider }}.yml
       - deploy-config/{{ netlab_device_type }}.yml
@@ -3988,8 +3991,8 @@ defaults:
       - deploy-config/{{ ansible_network_os }}.yml
     templates:
       dirs:
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/templates
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/daemons
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/templates
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/daemons
     t_files:
       files:
       - '{{config_module}}/{{netlab_device_type}}-{{provider|default(netlab_provider)}}.j2'
@@ -4001,7 +4004,7 @@ defaults:
       - '{{netlab_device_type}}/{{config_module}}.j2'
     ready:
       dirs:
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks/readiness-check
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks/readiness-check
       files:
       - '{{netlab_device_type}}-{{provider|default(netlab_provider)}}.yml'
       - '{{netlab_device_type}}.yml'
@@ -4009,7 +4012,7 @@ defaults:
       - '{{ansible_network_os}}.yml'
     collect:
       dirs:
-      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks/fetch-config
+      - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks/fetch-config
   ports:
     ssh: 22
     http: 80
@@ -4251,7 +4254,6 @@ defaults:
       - ospf
       - eigrp
       - isis
-      - ripv2
     supported_on:
     - arubacx
     - asav
@@ -5801,7 +5803,7 @@ defaults:
         - 10.1.0.22
   module:
   - ospf
-  name: netlab_ospf_
+  name: ospf_4nodes_
   plugin: []
 provider: clab
 nodes:
@@ -5814,8 +5816,8 @@ nodes:
     name: a1
     interfaces:
     - ipv4: 10.1.0.1/30
-      type: p2p
       linkindex: 1
+      type: p2p
       name: a1 -> a2
       ifindex: 1
       ifname: eth1
@@ -5829,12 +5831,12 @@ nodes:
         passive: false
         network_type: point-to-point
     - ipv4: 10.1.0.5/30
-      type: p2p
+      linkindex: 2
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 2
+      type: p2p
       name: a1 -> s1
       ifindex: 2
       ifname: eth2
@@ -5844,12 +5846,12 @@ nodes:
         node: s1
         ipv4: 10.1.0.6/30
     - ipv4: 10.1.0.9/30
-      type: p2p
+      linkindex: 3
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 3
+      type: p2p
       name: a1 -> s2
       ifindex: 3
       ifname: eth3
@@ -5887,7 +5889,7 @@ nodes:
       ifname: eth0
       ipv4: 192.168.121.101
       mac: 08:4f:a9:00:00:01
-    hostname: clab-netlab_ospf_-a1
+    hostname: clab-ospf_4nodes_-a1
   a2:
     ospf:
       area: 0.0.0.0
@@ -5897,8 +5899,8 @@ nodes:
     name: a2
     interfaces:
     - ipv4: 10.1.0.2/30
-      type: p2p
       linkindex: 1
+      type: p2p
       name: a2 -> a1
       ifindex: 1
       ifname: eth1
@@ -5912,12 +5914,12 @@ nodes:
         passive: false
         network_type: point-to-point
     - ipv4: 10.1.0.13/30
-      type: p2p
+      linkindex: 4
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 4
+      type: p2p
       name: a2 -> s1
       ifindex: 2
       ifname: eth2
@@ -5927,12 +5929,12 @@ nodes:
         node: s1
         ipv4: 10.1.0.14/30
     - ipv4: 10.1.0.17/30
-      type: p2p
+      linkindex: 5
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 5
+      type: p2p
       name: a2 -> s2
       ifindex: 3
       ifname: eth3
@@ -5970,7 +5972,7 @@ nodes:
       ifname: eth0
       ipv4: 192.168.121.102
       mac: 08:4f:a9:00:00:02
-    hostname: clab-netlab_ospf_-a2
+    hostname: clab-ospf_4nodes_-a2
   s1:
     ospf:
       area: 0.0.0.1
@@ -5980,12 +5982,12 @@ nodes:
     name: s1
     interfaces:
     - ipv4: 10.1.0.6/30
-      type: p2p
+      linkindex: 2
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 2
+      type: p2p
       name: s1 -> a1
       ifindex: 1
       ifname: eth1
@@ -5995,12 +5997,12 @@ nodes:
         node: a1
         ipv4: 10.1.0.5/30
     - ipv4: 10.1.0.14/30
-      type: p2p
+      linkindex: 4
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 4
+      type: p2p
       name: s1 -> a2
       ifindex: 2
       ifname: eth2
@@ -6010,8 +6012,8 @@ nodes:
         node: a2
         ipv4: 10.1.0.13/30
     - ipv4: 10.1.0.21/30
-      type: p2p
       linkindex: 6
+      type: p2p
       name: s1 -> s2
       ifindex: 3
       ifname: eth3
@@ -6053,7 +6055,7 @@ nodes:
       ifname: eth0
       ipv4: 192.168.121.103
       mac: 08:4f:a9:00:00:03
-    hostname: clab-netlab_ospf_-s1
+    hostname: clab-ospf_4nodes_-s1
   s2:
     ospf:
       area: 0.0.0.1
@@ -6063,12 +6065,12 @@ nodes:
     name: s2
     interfaces:
     - ipv4: 10.1.0.10/30
-      type: p2p
+      linkindex: 3
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 3
+      type: p2p
       name: s2 -> a1
       ifindex: 1
       ifname: eth1
@@ -6078,12 +6080,12 @@ nodes:
         node: a1
         ipv4: 10.1.0.9/30
     - ipv4: 10.1.0.18/30
-      type: p2p
+      linkindex: 5
       ospf:
         area: 0.0.0.1
         passive: false
         network_type: point-to-point
-      linkindex: 5
+      type: p2p
       name: s2 -> a2
       ifindex: 2
       ifname: eth2
@@ -6093,8 +6095,8 @@ nodes:
         node: a2
         ipv4: 10.1.0.17/30
     - ipv4: 10.1.0.22/30
-      type: p2p
       linkindex: 6
+      type: p2p
       name: s2 -> s1
       ifindex: 3
       ifname: eth3
@@ -6136,7 +6138,7 @@ nodes:
       ifname: eth0
       ipv4: 192.168.121.104
       mac: 08:4f:a9:00:00:04
-    hostname: clab-netlab_ospf_-s2
+    hostname: clab-ospf_4nodes_-s2
 links:
 - interfaces:
   - node: a1
@@ -6237,9 +6239,9 @@ links:
   prefix:
     ipv4: 10.1.0.20/30
 input:
-- /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/topology.yml
+- /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/topology.yml
 - package:topology-defaults.yml
-name: netlab_ospf_
+name: ospf_4nodes_
 ospf:
   area: 0.0.0.0
 addressing:

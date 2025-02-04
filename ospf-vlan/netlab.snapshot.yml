@@ -1,5 +1,10 @@
 %YAML 1.1
 ---
+tools:
+  graphite:
+    runtime: docker
+  suzieq:
+    runtime: docker
 nodes:
   s1:
     module:
@@ -8,8 +13,8 @@ nodes:
     name: s1
     interfaces:
     - ipv4: 10.1.0.1/30
-      linkindex: 1
       type: p2p
+      linkindex: 1
       name: s1 -> s2
       ifindex: 1
       ifname: Ethernet1
@@ -26,9 +31,9 @@ nodes:
     - vlan:
         access: blue_a
         access_id: 100
-      linkindex: 2
       bridge: ospf_vlan_2
       type: lan
+      linkindex: 2
       ifindex: 2
       ifname: Ethernet2
       clab:
@@ -41,9 +46,9 @@ nodes:
     - vlan:
         access: blue_a
         access_id: 100
-      linkindex: 3
       bridge: ospf_vlan_3
       type: lan
+      linkindex: 3
       ifindex: 3
       ifname: Ethernet3
       clab:
@@ -120,8 +125,8 @@ nodes:
     name: s2
     interfaces:
     - ipv4: 10.1.0.2/30
-      linkindex: 1
       type: p2p
+      linkindex: 1
       name: s2 -> s1
       ifindex: 1
       ifname: Ethernet1
@@ -138,9 +143,9 @@ nodes:
     - vlan:
         access: blue_b
         access_id: 100
-      linkindex: 4
       bridge: ospf_vlan_4
       type: lan
+      linkindex: 4
       ifindex: 2
       ifname: Ethernet2
       clab:
@@ -153,9 +158,9 @@ nodes:
     - vlan:
         access: blue_b
         access_id: 100
-      linkindex: 5
       bridge: ospf_vlan_5
       type: lan
+      linkindex: 5
       ifindex: 3
       ifname: Ethernet3
       clab:
@@ -229,9 +234,9 @@ nodes:
     name: h1
     interfaces:
     - ipv4: 172.16.0.3/24
-      linkindex: 2
       bridge: ospf_vlan_2
       type: lan
+      linkindex: 2
       name: h1 -> [s1,h2]
       ifindex: 1
       ifname: eth1
@@ -290,9 +295,9 @@ nodes:
     name: h2
     interfaces:
     - ipv4: 172.16.0.4/24
-      linkindex: 3
       bridge: ospf_vlan_3
       type: lan
+      linkindex: 3
       name: h2 -> [h1,s1]
       ifindex: 1
       ifname: eth1
@@ -351,9 +356,9 @@ nodes:
     name: h3
     interfaces:
     - ipv4: 172.16.1.5/24
-      linkindex: 4
       bridge: ospf_vlan_4
       type: lan
+      linkindex: 4
       name: h3 -> [s2,h4]
       ifindex: 1
       ifname: eth1
@@ -412,9 +417,9 @@ nodes:
     name: h4
     interfaces:
     - ipv4: 172.16.1.6/24
-      linkindex: 5
       bridge: ospf_vlan_5
       type: lan
+      linkindex: 5
       name: h4 -> [h3,s2]
       ifindex: 1
       ifname: eth1

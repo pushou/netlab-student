@@ -1,0 +1,67 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/R11/daemons:/etc/frr/daemons
+  - clab_files/R11/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-big_ospf-R11
+interfaces:
+- ifindex: 1
+  ifname: eth1
+  ipv4: 10.1.0.66/30
+  linkindex: 17
+  mtu: 1500
+  name: R11 -> R10
+  neighbors:
+  - ifname: eth2
+    ipv4: 10.1.0.65/30
+    node: R10
+  ospf:
+    area: 0.0.0.1
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 2
+  ifname: eth2
+  ipv4: 10.1.0.81/30
+  linkindex: 21
+  mtu: 1500
+  name: R11 -> R19
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.82/30
+    node: R19
+  ospf:
+    area: 0.0.0.1
+    network_type: point-to-point
+    passive: false
+  type: p2p
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.9/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.1
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.109
+  mac: 08:4f:a9:00:00:09
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.1
+  router_id: 10.0.0.9

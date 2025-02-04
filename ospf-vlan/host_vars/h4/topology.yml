@@ -5,9 +5,9 @@
 ---
 interfaces:
 - ipv4: 172.16.1.6/24
+  type: lan
   linkindex: 5
   bridge: ospf_vlan_5
-  type: lan
   name: h4 -> [h3,s2]
   ifindex: 1
   ifname: eth1

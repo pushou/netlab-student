@@ -1,0 +1,140 @@
+{
+  "links": [
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "s1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "s2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "s1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "h1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "s1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "h2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "s2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "h3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "s2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "h4",
+        "peer": "a"
+      }
+    }
+  ],
+  "name": "ospf_vlan",
+  "nodes": {
+    "h1": {
+      "group": "tier-1",
+      "image": "python:3.9-alpine",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv6-address": "",
+      "name": "h1"
+    },
+    "h2": {
+      "group": "tier-1",
+      "image": "python:3.9-alpine",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv6-address": "",
+      "name": "h2"
+    },
+    "h3": {
+      "group": "tier-1",
+      "image": "python:3.9-alpine",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.105",
+      "mgmt-ipv6-address": "",
+      "name": "h3"
+    },
+    "h4": {
+      "group": "tier-1",
+      "image": "python:3.9-alpine",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.106",
+      "mgmt-ipv6-address": "",
+      "name": "h4"
+    },
+    "s1": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "switch",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv6-address": "",
+      "name": "s1"
+    },
+    "s2": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "switch",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv6-address": "",
+      "name": "s2"
+    }
+  },
+  "type": "clab"
+}

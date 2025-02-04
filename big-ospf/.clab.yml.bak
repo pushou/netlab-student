@@ -1,0 +1,222 @@
+name: big_ospf
+prefix: "clab"
+
+mgmt:
+  network: netlab_mgmt
+  ipv4-subnet: 192.168.121.0/24
+  # Note: 'start' not validated
+topology:
+  nodes:
+    R1:
+      mgmt-ipv4: 192.168.121.101
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R1/daemons:/etc/frr/daemons
+      - clab_files/R1/hosts:/etc/hosts
+    R2:
+      mgmt-ipv4: 192.168.121.102
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R2/daemons:/etc/frr/daemons
+      - clab_files/R2/hosts:/etc/hosts
+    R3:
+      mgmt-ipv4: 192.168.121.103
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R3/daemons:/etc/frr/daemons
+      - clab_files/R3/hosts:/etc/hosts
+    R4:
+      mgmt-ipv4: 192.168.121.104
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R4/daemons:/etc/frr/daemons
+      - clab_files/R4/hosts:/etc/hosts
+    R5:
+      mgmt-ipv4: 192.168.121.105
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R5/daemons:/etc/frr/daemons
+      - clab_files/R5/hosts:/etc/hosts
+    R6:
+      mgmt-ipv4: 192.168.121.106
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R6/daemons:/etc/frr/daemons
+      - clab_files/R6/hosts:/etc/hosts
+    R7:
+      mgmt-ipv4: 192.168.121.107
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R7/daemons:/etc/frr/daemons
+      - clab_files/R7/hosts:/etc/hosts
+    R10:
+      mgmt-ipv4: 192.168.121.108
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R10/daemons:/etc/frr/daemons
+      - clab_files/R10/hosts:/etc/hosts
+    R11:
+      mgmt-ipv4: 192.168.121.109
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R11/daemons:/etc/frr/daemons
+      - clab_files/R11/hosts:/etc/hosts
+    R19:
+      mgmt-ipv4: 192.168.121.110
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R19/daemons:/etc/frr/daemons
+      - clab_files/R19/hosts:/etc/hosts
+    R12:
+      mgmt-ipv4: 192.168.121.111
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R12/daemons:/etc/frr/daemons
+      - clab_files/R12/hosts:/etc/hosts
+    R13:
+      mgmt-ipv4: 192.168.121.112
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R13/daemons:/etc/frr/daemons
+      - clab_files/R13/hosts:/etc/hosts
+    R14:
+      mgmt-ipv4: 192.168.121.113
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R14/daemons:/etc/frr/daemons
+      - clab_files/R14/hosts:/etc/hosts
+    R15:
+      mgmt-ipv4: 192.168.121.114
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R15/daemons:/etc/frr/daemons
+      - clab_files/R15/hosts:/etc/hosts
+    R16:
+      mgmt-ipv4: 192.168.121.115
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R16/daemons:/etc/frr/daemons
+      - clab_files/R16/hosts:/etc/hosts
+    R18:
+      mgmt-ipv4: 192.168.121.116
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/R18/daemons:/etc/frr/daemons
+      - clab_files/R18/hosts:/etc/hosts
+
+
+  links:
+  - endpoints:
+    - "R2:eth1"
+    - "R14:eth1"
+  - endpoints:
+    - "R13:eth1"
+    - "R14:eth2"
+  - endpoints:
+    - "R12:eth1"
+    - "R14:eth3"
+  - endpoints:
+    - "R1:eth1"
+    - "R14:eth4"
+  - endpoints:
+    - "R1:eth2"
+    - "R14:eth5"
+  - endpoints:
+    - "R2:eth2"
+    - "R3:eth1"
+  - endpoints:
+    - "R1:eth3"
+    - "R2:eth3"
+  - endpoints:
+    - "R1:eth4"
+    - "R3:eth2"
+  - endpoints:
+    - "R2:eth4"
+    - "R4:eth1"
+  - endpoints:
+    - "R4:eth2"
+    - "R5:eth1"
+  - endpoints:
+    - "R4:eth3"
+    - "R5:eth2"
+  - endpoints:
+    - "R4:eth4"
+    - "R6:eth1"
+  - endpoints:
+    - "R5:eth3"
+    - "R7:eth1"
+  - endpoints:
+    - "R4:eth5"
+    - "R6:eth2"
+  - endpoints:
+    - "R6:eth3"
+    - "R7:eth2"
+  - endpoints:
+    - "R2:eth5"
+    - "R10:eth1"
+  - endpoints:
+    - "R10:eth2"
+    - "R11:eth1"
+  - endpoints:
+    - "R15:eth1"
+    - "R18:eth1"
+  - endpoints:
+    - "R16:eth1"
+    - "R18:eth2"
+  - endpoints:
+    - "R3:eth3"
+    - "R18:eth3"
+  - endpoints:
+    - "R11:eth2"
+    - "R19:eth1"
+  - endpoints:
+    - "R4:eth6"
+    - "R19:eth2"

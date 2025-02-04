@@ -1,21 +1,21 @@
-# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/topology.yml', 'package:topology-defaults.yml']
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/topology.yml', 'package:topology-defaults.yml']
 #
 
 %YAML 1.1
 ---
 netlab_provider: clab
-netlab_name: netlab_ospf_
+netlab_name: ospf_4nodes_
 paths_validate:
-- /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/validate
+- /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/validate
 paths_plugin:
-- /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp
+- /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr
 - /home/pouchou/.netlab
-- /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/extra
+- /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/extra
 paths_custom:
   dirs:
-  - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp
+  - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr
   - /home/pouchou/.netlab
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/extra
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/extra
   files:
   - "{{ custom_config + '/' + inventory_hostname + '.' + netlab_device_type + '-'
     + node_provider + '.j2' }}"
@@ -45,7 +45,7 @@ paths_custom:
   - '{{ custom_config }}/deploy.yml'
 paths_deploy:
   dirs:
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks
   tasks_generic:
   - deploy-config/{{ netlab_device_type }}-{{ node_provider }}.yml
   - deploy-config/{{ netlab_device_type }}.yml
@@ -64,8 +64,8 @@ paths_deploy:
   - deploy-config/{{ ansible_network_os }}.yml
 paths_templates:
   dirs:
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/templates
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/daemons
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/templates
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/daemons
 paths_t_files:
   files:
   - '{{config_module}}/{{netlab_device_type}}-{{provider|default(netlab_provider)}}.j2'
@@ -77,7 +77,7 @@ paths_t_files:
   - '{{netlab_device_type}}/{{config_module}}.j2'
 paths_ready:
   dirs:
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks/readiness-check
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks/readiness-check
   files:
   - '{{netlab_device_type}}-{{provider|default(netlab_provider)}}.yml'
   - '{{netlab_device_type}}.yml'
@@ -85,7 +85,7 @@ paths_ready:
   - '{{ansible_network_os}}.yml'
 paths_collect:
   dirs:
-  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/networklab-1.9.3.post1-py3.11.egg/netsim/ansible/tasks/fetch-config
+  - /home/pouchou/.pyenv/versions/3.11.3/lib/python3.11/site-packages/netsim/ansible/tasks/fetch-config
 pools:
   lan:
     ipv4: 172.16.0.0/16

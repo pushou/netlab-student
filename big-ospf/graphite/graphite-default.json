@@ -1,0 +1,464 @@
+{
+  "links": [
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "R2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R14",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R14",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R13",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "R14",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R12",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth4",
+        "node": "R14",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth5",
+        "node": "R14",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "R1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth3",
+        "node": "R2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth4",
+        "node": "R1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth4",
+        "node": "R2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "R5",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R5",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth3",
+        "node": "R4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth4",
+        "node": "R4",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "R5",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth5",
+        "node": "R4",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "R6",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth5",
+        "node": "R2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R10",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R10",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R11",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "R15",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "R18",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "R16",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R18",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth3",
+        "node": "R18",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth3",
+        "node": "R3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "R19",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth2",
+        "node": "R11",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "R19",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth6",
+        "node": "R4",
+        "peer": "a"
+      }
+    }
+  ],
+  "name": "big_ospf",
+  "nodes": {
+    "R1": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv6-address": "",
+      "name": "R1"
+    },
+    "R10": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.108",
+      "mgmt-ipv6-address": "",
+      "name": "R10"
+    },
+    "R11": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.109",
+      "mgmt-ipv6-address": "",
+      "name": "R11"
+    },
+    "R12": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.111",
+      "mgmt-ipv6-address": "",
+      "name": "R12"
+    },
+    "R13": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.112",
+      "mgmt-ipv6-address": "",
+      "name": "R13"
+    },
+    "R14": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.113",
+      "mgmt-ipv6-address": "",
+      "name": "R14"
+    },
+    "R15": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.114",
+      "mgmt-ipv6-address": "",
+      "name": "R15"
+    },
+    "R16": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.115",
+      "mgmt-ipv6-address": "",
+      "name": "R16"
+    },
+    "R18": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.116",
+      "mgmt-ipv6-address": "",
+      "name": "R18"
+    },
+    "R19": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.110",
+      "mgmt-ipv6-address": "",
+      "name": "R19"
+    },
+    "R2": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv6-address": "",
+      "name": "R2"
+    },
+    "R3": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv6-address": "",
+      "name": "R3"
+    },
+    "R4": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv6-address": "",
+      "name": "R4"
+    },
+    "R5": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.105",
+      "mgmt-ipv6-address": "",
+      "name": "R5"
+    },
+    "R6": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.106",
+      "mgmt-ipv6-address": "",
+      "name": "R6"
+    },
+    "R7": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.107",
+      "mgmt-ipv6-address": "",
+      "name": "R7"
+    }
+  },
+  "type": "clab"
+}

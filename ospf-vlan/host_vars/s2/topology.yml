@@ -8,8 +8,8 @@ module:
 - ospf
 interfaces:
 - ipv4: 10.1.0.2/30
-  linkindex: 1
   type: p2p
+  linkindex: 1
   name: s2 -> s1
   ifindex: 1
   ifname: Ethernet1
@@ -26,9 +26,9 @@ interfaces:
 - vlan:
     access: blue_b
     access_id: 100
+  type: lan
   linkindex: 4
   bridge: ospf_vlan_4
-  type: lan
   ifindex: 2
   ifname: Ethernet2
   clab:
@@ -41,9 +41,9 @@ interfaces:
 - vlan:
     access: blue_b
     access_id: 100
+  type: lan
   linkindex: 5
   bridge: ospf_vlan_5
-  type: lan
   ifindex: 3
   ifname: Ethernet3
   clab:

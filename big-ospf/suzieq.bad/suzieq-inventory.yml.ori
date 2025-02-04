@@ -1,0 +1,14 @@
+---
+sources:
+- name: netlab_ssh
+  hosts: []
+
+devices:
+- name: ignore-known-hosts
+  ignore-known-hosts: true
+  transport: ssh
+
+namespaces:
+- name: netlab_ssh
+  source: netlab_ssh
+  device: ignore-known-hosts

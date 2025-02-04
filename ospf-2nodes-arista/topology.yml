@@ -1,7 +1,11 @@
 message:
   simple 2 nodes OSPF.
+tools:
+ suzieq:
+ graphite:
+   # edgeshark:
 
-module: [ ospf,ripv2 ]
+module: [ ospf ]
 defaults.device: eos
 provider: clab
 defaults.providers.clab.bridge_type: ovs-bridge
@@ -9,11 +13,11 @@ defaults.providers.clab.bridge_type: ovs-bridge
 nodes:
   ceos1:
     image: registry.iutbeziers.fr/ceos:4.33.1F
-    module: [ ospf, ripv2 ]
+    module: [ ospf ]
     ospf.area: 0
   ceos2:
     image: registry.iutbeziers.fr/ceos:4.33.1F
-    module: [ ospf, ripv2 ]
+    module: [ ospf ]
     ospf.area: 0
   linux1:
     device: linux

@@ -1,0 +1,107 @@
+message:
+  This lab illustrates the distance vector behavior of inter-area OSPF.
+
+tools:
+ suzieq:
+ graphite:
+   # edgeshark:
+module: [ ospf ]
+defaults.device: frr
+provider: clab
+ospf:
+  area: 0.0.0.0
+
+nodes:
+  R1:
+  R2:
+  R3:
+  R4:
+  R5:
+    ospf.area: 3
+  R6:
+    ospf.area: 4
+  R7:
+    ospf.area: 4
+  R10:
+    ospf.area: 1
+  R11:
+    ospf.area: 1
+  R19:
+    ospf.area: 1
+  R12:
+    ospf.area: 3
+  R13:
+    ospf.area: 3
+  R14:
+    ospf.area: 3
+  R15:
+    ospf.area: 2
+  R16:
+    ospf.area: 2
+  R18:
+    ospf.area: 2
+  
+links:
+- R2:
+  R14:
+- R14:
+  R13:
+  ospf.area: 3
+- R14:
+  R12:
+  ospf.area: 3
+- R14:
+  R1:
+  ospf.area: 3
+- R1:
+  R14:
+- R2:
+  R3:
+  ospf.network_type: broadcast
+- R1:
+  R2:
+  ospf.network_type: broadcast
+- R1:
+  R3:
+  ospf.network_type: broadcast
+- R2:
+  R4:
+- R5:
+  R4:
+  ospf.cost: 10000
+- R5:
+  R4:
+- R4:
+  R6:
+  ospf.area: 4
+- R5:
+  R7:
+  ospf.area: 4
+- R4:
+  R6:
+  ospf.area: 4
+- R6:
+  R7:
+  ospf.area: 4
+- R2:
+  R10:
+  ospf.area: 1
+- R10:
+  R11:
+  ospf.area: 1
+- R15:
+  R18:
+  ospf.area: 2
+- R16:
+  R18:
+  ospf.area: 2
+- R18:
+  R3:
+  ospf.area: 2
+- R19:
+  R11:
+  ospf.area: 1
+- R19:
+  R4:
+  ospf.area: 1
+

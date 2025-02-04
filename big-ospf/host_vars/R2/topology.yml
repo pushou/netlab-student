@@ -1,0 +1,112 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/R2/daemons:/etc/frr/daemons
+  - clab_files/R2/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-big_ospf-R2
+interfaces:
+- ifindex: 1
+  ifname: eth1
+  ipv4: 10.1.0.2/30
+  linkindex: 1
+  mtu: 1500
+  name: R2 -> R14
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.1/30
+    node: R14
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 2
+  ifname: eth2
+  ipv4: 10.1.0.21/30
+  linkindex: 6
+  mtu: 1500
+  name: R2 -> R3
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.22/30
+    node: R3
+  ospf:
+    area: 0.0.0.0
+    network_type: broadcast
+    passive: false
+  type: p2p
+- ifindex: 3
+  ifname: eth3
+  ipv4: 10.1.0.26/30
+  linkindex: 7
+  mtu: 1500
+  name: R2 -> R1
+  neighbors:
+  - ifname: eth3
+    ipv4: 10.1.0.25/30
+    node: R1
+  ospf:
+    area: 0.0.0.0
+    network_type: broadcast
+    passive: false
+  type: p2p
+- ifindex: 4
+  ifname: eth4
+  ipv4: 10.1.0.33/30
+  linkindex: 9
+  mtu: 1500
+  name: R2 -> R4
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.34/30
+    node: R4
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 5
+  ifname: eth5
+  ipv4: 10.1.0.62/30
+  linkindex: 16
+  mtu: 1500
+  name: R2 -> R10
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.61/30
+    node: R10
+  ospf:
+    area: 0.0.0.1
+    network_type: point-to-point
+    passive: false
+  type: p2p
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.2/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.0
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.102
+  mac: 08:4f:a9:00:00:02
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.0
+  router_id: 10.0.0.2

@@ -1,0 +1,112 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/R14/daemons:/etc/frr/daemons
+  - clab_files/R14/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-big_ospf-R14
+interfaces:
+- ifindex: 1
+  ifname: eth1
+  ipv4: 10.1.0.1/30
+  linkindex: 1
+  mtu: 1500
+  name: R14 -> R2
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.2/30
+    node: R2
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 2
+  ifname: eth2
+  ipv4: 10.1.0.6/30
+  linkindex: 2
+  mtu: 1500
+  name: R14 -> R13
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.5/30
+    node: R13
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 3
+  ifname: eth3
+  ipv4: 10.1.0.10/30
+  linkindex: 3
+  mtu: 1500
+  name: R14 -> R12
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.9/30
+    node: R12
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 4
+  ifname: eth4
+  ipv4: 10.1.0.14/30
+  linkindex: 4
+  mtu: 1500
+  name: R14 -> R1
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.13/30
+    node: R1
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 5
+  ifname: eth5
+  ipv4: 10.1.0.18/30
+  linkindex: 5
+  mtu: 1500
+  name: R14 -> R1
+  neighbors:
+  - ifname: eth2
+    ipv4: 10.1.0.17/30
+    node: R1
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.13/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.3
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.113
+  mac: 08:4f:a9:00:00:0d
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.3
+  router_id: 10.0.0.13

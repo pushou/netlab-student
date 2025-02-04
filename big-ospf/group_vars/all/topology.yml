@@ -1,0 +1,235 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf/topology.yml', 'package:topology-defaults.yml']
+#
+
+hosts:
+  R1:
+    ipv4:
+    - 10.0.0.1
+    - 10.1.0.13
+    - 10.1.0.17
+    - 10.1.0.25
+    - 10.1.0.29
+    loopback:
+    - 10.0.0.1
+  R10:
+    ipv4:
+    - 10.0.0.8
+    - 10.1.0.61
+    - 10.1.0.65
+    loopback:
+    - 10.0.0.8
+  R11:
+    ipv4:
+    - 10.0.0.9
+    - 10.1.0.66
+    - 10.1.0.81
+    loopback:
+    - 10.0.0.9
+  R12:
+    ipv4:
+    - 10.0.0.11
+    - 10.1.0.9
+    loopback:
+    - 10.0.0.11
+  R13:
+    ipv4:
+    - 10.0.0.12
+    - 10.1.0.5
+    loopback:
+    - 10.0.0.12
+  R14:
+    ipv4:
+    - 10.0.0.13
+    - 10.1.0.1
+    - 10.1.0.6
+    - 10.1.0.10
+    - 10.1.0.14
+    - 10.1.0.18
+    loopback:
+    - 10.0.0.13
+  R15:
+    ipv4:
+    - 10.0.0.14
+    - 10.1.0.69
+    loopback:
+    - 10.0.0.14
+  R16:
+    ipv4:
+    - 10.0.0.15
+    - 10.1.0.73
+    loopback:
+    - 10.0.0.15
+  R18:
+    ipv4:
+    - 10.0.0.16
+    - 10.1.0.70
+    - 10.1.0.74
+    - 10.1.0.77
+    loopback:
+    - 10.0.0.16
+  R19:
+    ipv4:
+    - 10.0.0.10
+    - 10.1.0.82
+    - 10.1.0.85
+    loopback:
+    - 10.0.0.10
+  R2:
+    ipv4:
+    - 10.0.0.2
+    - 10.1.0.2
+    - 10.1.0.21
+    - 10.1.0.26
+    - 10.1.0.33
+    - 10.1.0.62
+    loopback:
+    - 10.0.0.2
+  R3:
+    ipv4:
+    - 10.0.0.3
+    - 10.1.0.22
+    - 10.1.0.30
+    - 10.1.0.78
+    loopback:
+    - 10.0.0.3
+  R4:
+    ipv4:
+    - 10.0.0.4
+    - 10.1.0.34
+    - 10.1.0.37
+    - 10.1.0.41
+    - 10.1.0.45
+    - 10.1.0.53
+    - 10.1.0.86
+    loopback:
+    - 10.0.0.4
+  R5:
+    ipv4:
+    - 10.0.0.5
+    - 10.1.0.38
+    - 10.1.0.42
+    - 10.1.0.49
+    loopback:
+    - 10.0.0.5
+  R6:
+    ipv4:
+    - 10.0.0.6
+    - 10.1.0.46
+    - 10.1.0.54
+    - 10.1.0.57
+    loopback:
+    - 10.0.0.6
+  R7:
+    ipv4:
+    - 10.0.0.7
+    - 10.1.0.50
+    - 10.1.0.58
+    loopback:
+    - 10.0.0.7
+netlab_name: big_ospf
+netlab_provider: clab
+paths_collect:
+  dirs:
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/ansible/tasks/fetch-config
+paths_custom:
+  dirs:
+  - /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf
+  - /home/pouchou/.netlab
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/extra
+  files:
+  - '{{ custom_config + ''/'' + inventory_hostname + ''.'' + netlab_device_type +
+    ''-'' + node_provider + ''.j2'' }}'
+  - '{{ custom_config + ''/'' + inventory_hostname + ''.'' + netlab_device_type +
+    ''.j2'' }}'
+  - '{{ custom_config + ''/'' + inventory_hostname + ''.j2'' }}'
+  - '{{ custom_config + ''/'' + inventory_hostname + ''.cfg'' }}'
+  - '{{ custom_config + ''/'' + netlab_device_type + ''-'' + node_provider + ''.j2''
+    }}'
+  - '{{ custom_config + ''/'' + netlab_device_type + ''.j2'' }}'
+  - '{{ custom_config + ''/'' + ansible_network_os + ''-'' + node_provider + ''.j2''
+    }}'
+  - '{{ custom_config + ''/'' + ansible_network_os + ''.j2'' }}'
+  - '{{ custom_config + ''.'' + inventory_hostname + ''.'' + netlab_device_type +
+    ''.j2'' }}'
+  - '{{ custom_config + ''.'' + inventory_hostname + ''.'' + ansible_network_os +
+    ''.j2'' }}'
+  - '{{ custom_config + ''.'' + inventory_hostname + ''.j2'' }}'
+  - '{{ custom_config + ''.'' + netlab_device_type + ''.j2'' }}'
+  - '{{ custom_config + ''.'' + ansible_network_os + ''.j2'' }}'
+  - '{{ custom_config }}'
+  - '{{ custom_config + ''.j2'' }}'
+  tasks:
+  - '{{ custom_config }}/deploy-{{ inventory_hostname }}.yml'
+  - '{{ custom_config }}/deploy.{{ netlab_device_type }}-{{ node_provider }}.yml'
+  - '{{ custom_config }}/deploy.{{ netlab_device_type }}.yml'
+  - '{{ custom_config }}/deploy.{{ ansible_network_os }}-{{ node_provider }}.yml'
+  - '{{ custom_config }}/deploy.{{ ansible_network_os }}.yml'
+  - '{{ custom_config }}/deploy.yml'
+paths_deploy:
+  dirs:
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/ansible/tasks
+  files:
+  - '{{ netlab_device_type }}/{{ config_module }}-{{ provider|default(netlab_provider)
+    }}.yml'
+  - '{{ netlab_device_type }}/{{ config_module }}.yml'
+  - deploy-config/{{ netlab_device_type }}-{{ provider|default(netlab_provider) }}.yml
+  - deploy-config/{{ netlab_device_type }}.yml
+  - '{{ ansible_network_os }}/{{ config_module }}-{{ provider|default(netlab_provider)
+    }}.yml'
+  - '{{ ansible_network_os }}/{{ config_module }}.yml'
+  - deploy-config/{{ ansible_network_os }}-{{ provider|default(netlab_provider) }}.yml
+  - deploy-config/{{ ansible_network_os }}.yml
+  tasks_generic:
+  - deploy-config/{{ netlab_device_type }}-{{ node_provider }}.yml
+  - deploy-config/{{ netlab_device_type }}.yml
+  - deploy-config/{{ ansible_network_os }}-{{ node_provider }}.yml
+  - deploy-config/{{ ansible_network_os }}.yml
+paths_plugin:
+- /home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/big-ospf
+- /home/pouchou/.netlab
+- /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/extra
+paths_ready:
+  dirs:
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/ansible/tasks/readiness-check
+  files:
+  - '{{netlab_device_type}}-{{provider|default(netlab_provider)}}.yml'
+  - '{{netlab_device_type}}.yml'
+  - '{{ansible_network_os}}-{{provider|default(netlab_provider)}}.yml'
+  - '{{ansible_network_os}}.yml'
+paths_t_files:
+  files:
+  - '{{config_module}}/{{netlab_device_type}}-{{provider|default(netlab_provider)}}.j2'
+  - '{{config_module}}/{{netlab_device_type}}.j2'
+  - '{{config_module}}.{{netlab_device_type}}.j2'
+  - '{{config_module}}/{{ansible_network_os}}-{{provider|default(netlab_provider)}}.j2'
+  - '{{config_module}}/{{ansible_network_os}}.j2'
+  - '{{config_module}}.{{ansible_network_os}}.j2'
+  - '{{netlab_device_type}}/{{config_module}}.j2'
+paths_templates:
+  dirs:
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/ansible/templates
+  - /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/daemons
+paths_validate:
+- /home/pouchou/.pyenv/versions/3.11.3/envs/netlab/lib/python3.11/site-packages/netsim/validate
+pools:
+  l2only: {}
+  lan:
+    ipv4: 172.16.0.0/16
+    prefix: 24
+  loopback:
+    ipv4: 10.0.0.0/24
+    prefix: 32
+  mgmt:
+    ipv4: 192.168.121.0/24
+    mac: 08-4F-A9-00-00-00
+    prefix: 24
+    start: 100
+  p2p:
+    ipv4: 10.1.0.0/16
+    prefix: 30
+  router_id:
+    ipv4: 10.0.0.0/24
+    prefix: 32
+  vrf_loopback:
+    ipv4: 10.2.0.0/24
+    prefix: 32

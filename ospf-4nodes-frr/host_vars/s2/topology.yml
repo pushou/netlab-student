@@ -1,4 +1,4 @@
-# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/topology.yml', 'package:topology-defaults.yml']
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/topology.yml', 'package:topology-defaults.yml']
 #
 
 %YAML 1.1
@@ -10,12 +10,12 @@ ospf:
     ipv4: true
 interfaces:
 - ipv4: 10.1.0.10/30
-  type: p2p
+  linkindex: 3
   ospf:
     area: 0.0.0.1
     passive: false
     network_type: point-to-point
-  linkindex: 3
+  type: p2p
   name: s2 -> a1
   ifindex: 1
   ifname: eth1
@@ -25,12 +25,12 @@ interfaces:
     node: a1
     ipv4: 10.1.0.9/30
 - ipv4: 10.1.0.18/30
-  type: p2p
+  linkindex: 5
   ospf:
     area: 0.0.0.1
     passive: false
     network_type: point-to-point
-  linkindex: 5
+  type: p2p
   name: s2 -> a2
   ifindex: 2
   ifname: eth2
@@ -40,8 +40,8 @@ interfaces:
     node: a2
     ipv4: 10.1.0.17/30
 - ipv4: 10.1.0.22/30
-  type: p2p
   linkindex: 6
+  type: p2p
   name: s2 -> s1
   ifindex: 3
   ifname: eth3
@@ -81,4 +81,4 @@ mgmt:
   ifname: eth0
   ipv4: 192.168.121.104
   mac: 08:4f:a9:00:00:04
-hostname: clab-netlab_ospf_-s2
+hostname: clab-ospf_4nodes_-s2
