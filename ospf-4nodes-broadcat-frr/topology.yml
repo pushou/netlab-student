@@ -1,0 +1,26 @@
+message:
+  This lab illustrates the distance vector behavior of inter-area OSPF.
+
+module: [ ospf ]
+defaults.device: frr
+provider: clab
+defaults.providers.clab.bridge_type: ovs-bridge
+tools:
+ graphite:
+
+nodes:
+  r1:
+    ospf.area: 0
+  r2:
+    ospf.area: 0
+  r3:
+    ospf.area: 0
+  r4:
+    ospf.area: 0
+
+links:
+  - r1:
+    r2:
+    r3:
+    r4:
+    type: lan

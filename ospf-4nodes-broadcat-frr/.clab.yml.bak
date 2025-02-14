@@ -1,0 +1,62 @@
+name: ospf_4nodes_
+prefix: "clab"
+
+mgmt:
+  network: netlab_mgmt
+  ipv4-subnet: 192.168.121.0/24
+  # Note: 'start' not validated
+topology:
+  nodes:
+    r1:
+      mgmt-ipv4: 192.168.121.101
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/r1/daemons:/etc/frr/daemons
+      - clab_files/r1/hosts:/etc/hosts
+    r2:
+      mgmt-ipv4: 192.168.121.102
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/r2/daemons:/etc/frr/daemons
+      - clab_files/r2/hosts:/etc/hosts
+    r3:
+      mgmt-ipv4: 192.168.121.103
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/r3/daemons:/etc/frr/daemons
+      - clab_files/r3/hosts:/etc/hosts
+    r4:
+      mgmt-ipv4: 192.168.121.104
+      kind: linux
+      restart-policy: 'no'
+      image: quay.io/frrouting/frr:10.0.1
+      runtime: docker
+      binds:
+      - clab_files/r4/daemons:/etc/frr/daemons
+      - clab_files/r4/hosts:/etc/hosts
+
+    ospf_4node_1:
+      kind: ovs-bridge
+
+  links:
+  - endpoints:
+    - "r1:eth1"
+    - "ospf_4node_1:r1_eth1"
+  - endpoints:
+    - "r2:eth1"
+    - "ospf_4node_1:r2_eth1"
+  - endpoints:
+    - "r3:eth1"
+    - "ospf_4node_1:r3_eth1"
+  - endpoints:
+    - "r4:eth1"
+    - "ospf_4node_1:r4_eth1"

@@ -1,0 +1,114 @@
+{
+  "links": [
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r3",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r4",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    }
+  ],
+  "name": "ospf_4nodes_",
+  "nodes": {
+    "(lan:1)": {
+      "group": "tier-1",
+      "ipv4_address": "",
+      "kind": "(host bridge: ospf_4node_1)",
+      "labels": {
+        "graph-icon": "expand",
+        "graph-level": 1
+      },
+      "name": "(lan:1)"
+    },
+    "r1": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv6-address": "",
+      "name": "r1"
+    },
+    "r2": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv6-address": "",
+      "name": "r2"
+    },
+    "r3": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv6-address": "",
+      "name": "r3"
+    },
+    "r4": {
+      "group": "tier-1",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "kind": "frr",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv6-address": "",
+      "name": "r4"
+    }
+  },
+  "type": "clab"
+}

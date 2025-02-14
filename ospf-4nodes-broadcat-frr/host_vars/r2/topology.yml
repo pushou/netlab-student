@@ -1,0 +1,58 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-broadcat-frr/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
+clab:
+  binds:
+  - clab_files/r2/daemons:/etc/frr/daemons
+  - clab_files/r2/hosts:/etc/hosts
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-ospf_4nodes_-r2
+interfaces:
+- bridge: ospf_4node_1
+  ifindex: 1
+  ifname: eth1
+  ipv4: 172.16.0.2/24
+  linkindex: 1
+  mtu: 1500
+  name: r2 -> [r1,r3,r4]
+  neighbors:
+  - ifname: eth1
+    ipv4: 172.16.0.1/24
+    node: r1
+  - ifname: eth1
+    ipv4: 172.16.0.3/24
+    node: r3
+  - ifname: eth1
+    ipv4: 172.16.0.4/24
+    node: r4
+  ospf:
+    area: 0.0.0.0
+    passive: false
+  type: lan
+loopback:
+  ifindex: 0
+  ifname: lo
+  ipv4: 10.0.0.2/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.0
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.102
+  mac: 08:4f:a9:00:00:02
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.0
+  router_id: 10.0.0.2
