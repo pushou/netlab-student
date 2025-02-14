@@ -4,6 +4,8 @@ message:
 module: [ ospf ]
 defaults.device: frr
 provider: clab
+tools:
+ graphite:
 
 nodes:
   a1:
@@ -16,6 +18,10 @@ nodes:
     ospf.area: 1
 
 links:
+- a1:
+    ipv4: 192.168.1.232/24
+  clab:
+    uplink: enp0s31f6
 - a1-a2
 - a1:
   s1:
@@ -30,3 +36,5 @@ links:
   s2:
   ospf.area: 1
 - s1-s2
+
+

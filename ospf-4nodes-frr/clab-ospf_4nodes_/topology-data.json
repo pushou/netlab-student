@@ -1,0 +1,243 @@
+{
+  "name": "ospf_4nodes_",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "netlab_mgmt",
+        "bridge": "br-383b03053086",
+        "ipv4-subnet": "192.168.121.0/24",
+        "ipv4-gw": "192.168.121.1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCluScPESl1bpumb6lFN/0KEKhEcI+W0VnttVz2jyh9lbwyMoo6eZA7QbwhXx3Qy85u1tD9G1Q6ayzaJ0KdWTRVgqpNA+hWDZ09913zgQS3vnXPvNIBHqZkapnQE7GbegsbCvwfX6ePNBMem9CE8aOKy/6hJU6/ncn1Sf7NxcElRt4xFk9/D0zEjruwApZaWYAT1/O54hfMn1kdkYrRSrz33inR7NPO/LhcJ1WKe+OmDowaEANO49Yr0y83ZzQOmvhBJSfzVA5w2tQIImmWxOagDVEe1kXlyEYqezYcyF77sEAxJTjY90KYOf6DMwn8ke5A0wLDc70cLNR9/UnDJBGr","ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1M7OEuByblX49cadI9APHz5L59pKAwIFE2cJEzf/H0sv9drWLIrXlqLx/5ZfbrO9enDU+YEmccOayt8HoTQRbbW6kaJ4++qhFCgf91vxcP2dc534VfH/Axu+xyjK3EzHBGVnQIqqZKs7BEhHf8C1LaFC9T1x4RCYvH7TC0dzaY6fcj+Cfx2uY7kwK51y6eyXVzZpBGZR/cAIlL2/I9jd+e4x3XXFKHn1HeNVTxctJci7i/Je5amFhhbRuFTi4RrXbb+mwfdrLY9mOvpkWww3rC5j5Y+1Ko93dvkctQucnyqbwwUwDvwU7gaPCgIr7VFhQWl27vob3XJlyQlG3YBl1"],
+  "nodes": {
+    "a1": {
+      "index": "0",
+      "shortname": "a1",
+      "longname": "clab-ospf_4nodes_-a1",
+      "fqdn": "a1.ospf_4nodes_.io",
+      "group": "",
+      "labdir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/a1",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-383b03053086",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/a1",
+        "clab-node-longname": "clab-ospf_4nodes_-a1",
+        "clab-node-name": "a1",
+        "clab-node-type": "",
+        "clab-owner": "pouchou",
+        "clab-topo-file": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab.yml",
+        "containerlab": "ospf_4nodes_"
+      },
+      "port-bindings": [
+      ]
+    },
+    "a2": {
+      "index": "1",
+      "shortname": "a2",
+      "longname": "clab-ospf_4nodes_-a2",
+      "fqdn": "a2.ospf_4nodes_.io",
+      "group": "",
+      "labdir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/a2",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-383b03053086",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/a2",
+        "clab-node-longname": "clab-ospf_4nodes_-a2",
+        "clab-node-name": "a2",
+        "clab-node-type": "",
+        "clab-owner": "pouchou",
+        "clab-topo-file": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab.yml",
+        "containerlab": "ospf_4nodes_"
+      },
+      "port-bindings": [
+      ]
+    },
+    "s1": {
+      "index": "2",
+      "shortname": "s1",
+      "longname": "clab-ospf_4nodes_-s1",
+      "fqdn": "s1.ospf_4nodes_.io",
+      "group": "",
+      "labdir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/s1",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-383b03053086",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/s1",
+        "clab-node-longname": "clab-ospf_4nodes_-s1",
+        "clab-node-name": "s1",
+        "clab-node-type": "",
+        "clab-owner": "pouchou",
+        "clab-topo-file": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab.yml",
+        "containerlab": "ospf_4nodes_"
+      },
+      "port-bindings": [
+      ]
+    },
+    "s2": {
+      "index": "3",
+      "shortname": "s2",
+      "longname": "clab-ospf_4nodes_-s2",
+      "fqdn": "s2.ospf_4nodes_.io",
+      "group": "",
+      "labdir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/s2",
+      "kind": "linux",
+      "image": "quay.io/frrouting/frr:10.0.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-383b03053086",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab-ospf_4nodes_/s2",
+        "clab-node-longname": "clab-ospf_4nodes_-s2",
+        "clab-node-name": "s2",
+        "clab-node-type": "",
+        "clab-owner": "pouchou",
+        "clab-topo-file": "/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/clab.yml",
+        "containerlab": "ospf_4nodes_"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "a1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:fa:2f:46",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host",
+        "interface": "enp0s31f6",
+        "mac": "ac:1a:3d:93:c4:c8",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "a1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:80:c1:b1",
+        "peer": "z"
+      },
+      "z": {
+        "node": "a2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b2:8c:06",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "a1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:13:f3:1e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "s1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:40:4e:68",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "a1",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:00:d1:1f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "s2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:cf:b4:4c",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "a2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:c1:22:5f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "s1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:54:72:bb",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "a2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:79:6b:63",
+        "peer": "z"
+      },
+      "z": {
+        "node": "s2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:a9:ed:a2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "s1",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:0d:1d:7b",
+        "peer": "z"
+      },
+      "z": {
+        "node": "s2",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:69:24:ad",
+        "peer": "a"
+      }
+    }
+  ]
+}

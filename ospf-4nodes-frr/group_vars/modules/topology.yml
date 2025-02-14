@@ -1,7 +1,5 @@
 # Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/topology.yml', 'package:topology-defaults.yml']
 #
 
-%YAML 1.1
----
 netlab_module:
 - ospf

@@ -1,84 +1,95 @@
 # Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-4nodes-frr/topology.yml', 'package:topology-defaults.yml']
 #
 
-%YAML 1.1
----
-ospf:
-  area: 0.0.0.0
-  router_id: 10.0.0.1
-  af:
-    ipv4: true
-interfaces:
-- ipv4: 10.1.0.1/30
-  linkindex: 1
-  type: p2p
-  name: a1 -> a2
-  ifindex: 1
-  ifname: eth1
-  mtu: 1500
-  neighbors:
-  - ifname: eth1
-    node: a2
-    ipv4: 10.1.0.2/30
-  ospf:
-    area: 0.0.0.0
-    passive: false
-    network_type: point-to-point
-- ipv4: 10.1.0.5/30
-  linkindex: 2
-  ospf:
-    area: 0.0.0.1
-    passive: false
-    network_type: point-to-point
-  type: p2p
-  name: a1 -> s1
-  ifindex: 2
-  ifname: eth2
-  mtu: 1500
-  neighbors:
-  - ifname: eth1
-    node: s1
-    ipv4: 10.1.0.6/30
-- ipv4: 10.1.0.9/30
-  linkindex: 3
-  ospf:
-    area: 0.0.0.1
-    passive: false
-    network_type: point-to-point
-  type: p2p
-  name: a1 -> s2
-  ifindex: 3
-  ifname: eth3
-  mtu: 1500
-  neighbors:
-  - ifname: eth1
-    node: s2
-    ipv4: 10.1.0.10/30
+af:
+  ipv4: true
+box: quay.io/frrouting/frr:10.0.1
 clab:
-  kind: linux
-  config_templates:
-  - daemons:/etc/frr/daemons
-  - hosts:/etc/hosts
   binds:
   - clab_files/a1/daemons:/etc/frr/daemons
   - clab_files/a1/hosts:/etc/hosts
-box: quay.io/frrouting/frr:10.0.1
-module:
-- ospf
-mtu: 1500
-af:
-  ipv4: true
-loopback:
-  type: loopback
+  config_templates:
+  - daemons:/etc/frr/daemons
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-ospf_4nodes_-a1
+interfaces:
+- bridge: ospf_4node_1
+  ifindex: 1
+  ifname: eth1
+  ipv4: 192.168.1.232/24
+  linkindex: 1
+  mtu: 1500
+  name: a1 -> stub
   neighbors: []
-  virtual_interface: true
+  ospf:
+    area: 0.0.0.0
+    passive: true
+  role: stub
+  type: stub
+- ifindex: 2
+  ifname: eth2
+  ipv4: 10.1.0.1/30
+  linkindex: 2
+  mtu: 1500
+  name: a1 -> a2
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.2/30
+    node: a2
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 3
+  ifname: eth3
+  ipv4: 10.1.0.5/30
+  linkindex: 3
+  mtu: 1500
+  name: a1 -> s1
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.6/30
+    node: s1
+  ospf:
+    area: 0.0.0.1
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- ifindex: 4
+  ifname: eth4
+  ipv4: 10.1.0.9/30
+  linkindex: 4
+  mtu: 1500
+  name: a1 -> s2
+  neighbors:
+  - ifname: eth1
+    ipv4: 10.1.0.10/30
+    node: s2
+  ospf:
+    area: 0.0.0.1
+    network_type: point-to-point
+    passive: false
+  type: p2p
+loopback:
   ifindex: 0
   ifname: lo
   ipv4: 10.0.0.1/32
+  neighbors: []
   ospf:
     area: 0.0.0.0
+  type: loopback
+  virtual_interface: true
 mgmt:
   ifname: eth0
   ipv4: 192.168.121.101
   mac: 08:4f:a9:00:00:01
-hostname: clab-ospf_4nodes_-a1
+module:
+- ospf
+mtu: 1500
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.0
+  router_id: 10.0.0.1

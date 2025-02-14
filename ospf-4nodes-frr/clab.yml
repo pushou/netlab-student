@@ -48,12 +48,15 @@ topology:
   links:
   - endpoints:
     - "a1:eth1"
-    - "a2:eth1"
+    - "macvlan:enp0s31f6"
   - endpoints:
     - "a1:eth2"
-    - "s1:eth1"
+    - "a2:eth1"
   - endpoints:
     - "a1:eth3"
+    - "s1:eth1"
+  - endpoints:
+    - "a1:eth4"
     - "s2:eth1"
   - endpoints:
     - "a2:eth2"
