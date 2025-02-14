@@ -1,0 +1,57 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-multiarea-arista/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: wbitt/network-multitool:latest
+clab:
+  binds:
+  - clab_files/linux1/hosts:/etc/hosts
+  config_templates:
+  - hosts:/etc/hosts
+  kind: linux
+hostname: clab-ospf_multiar-linux1
+interfaces:
+- bridge: ospf_multi_6
+  gateway:
+    ipv4: 172.16.1.5/24
+  ifindex: 1
+  ifname: eth1
+  ipv4: 172.16.1.9/24
+  linkindex: 6
+  mtu: 1500
+  name: linux1 -> r11
+  neighbors:
+  - ifname: Ethernet2
+    ipv4: 172.16.1.5/24
+    node: r11
+  role: stub
+  type: lan
+mgmt:
+  ifname: eth0
+  ipv4: 192.168.121.109
+  mac: 08:4f:a9:00:00:09
+mtu: 1500
+role: host
+routing:
+  static:
+  - ipv4: 172.16.0.0/16
+    nexthop:
+      idx: 0
+      intf: eth1
+      ipv4: 172.16.1.5
+  - ipv4: 10.0.0.0/24
+    nexthop:
+      idx: 0
+      intf: eth1
+      ipv4: 172.16.1.5
+  - ipv4: 10.1.0.0/16
+    nexthop:
+      idx: 0
+      intf: eth1
+      ipv4: 172.16.1.5
+  - ipv4: 10.2.0.0/24
+    nexthop:
+      idx: 0
+      intf: eth1
+      ipv4: 172.16.1.5

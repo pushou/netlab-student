@@ -1,0 +1,75 @@
+message:
+  DR & BDR on LAN.
+
+module: [ ospf ]
+defaults.device: eos
+provider: clab
+defaults.providers.clab.bridge_type: ovs-bridge
+#defaults.devices.linux.group_vars.netlab_lldp_enable: true
+tools:
+ graphite:
+
+nodes:
+  r1:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r2:    
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r3:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r4:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r11:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r21:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r31:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  r41:
+        image: registry.iutbeziers.fr/ceos:4.33.1F
+  linux1:
+    device: linux
+    image: wbitt/network-multitool:latest
+  linux2:
+    device: linux
+    image: wbitt/network-multitool:latest
+  linux3:
+    device: linux
+    image: wbitt/network-multitool:latest
+  linux4:
+    device: linux
+    image: wbitt/network-multitool:latest
+
+links:
+  - r1:
+    r2:
+    r3:
+    r4:
+    type: lan
+    ospf: 
+      area: 0
+    name: LAN routeurs OSPF
+  - r1:
+    r11:
+    ospf:
+       area: 0.0.0.1
+  - r2:
+    r21:
+    ospf:
+       area: 0.0.0.2
+  - r3:
+    r31:
+    ospf:
+       area: 0.0.0.3
+  - r4:
+    r41:
+    ospf:
+       area: 0.0.0.4
+  - r11:
+    linux1:
+  - r21:
+    linux2:
+  - r31:
+    linux3:
+  - r41:
+    linux4:
+

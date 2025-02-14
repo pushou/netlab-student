@@ -1,0 +1,306 @@
+{
+  "links": [
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r3",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth1",
+        "node": "r4",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "",
+        "node": "(lan:1)",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r1",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "r11",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r2",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "r21",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r3",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "r31",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r4",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "r41",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r11",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "linux1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r21",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "linux2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r31",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "linux3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "interface": "eth2",
+        "node": "r41",
+        "peer": "z"
+      },
+      "z": {
+        "interface": "eth1",
+        "node": "linux4",
+        "peer": "a"
+      }
+    }
+  ],
+  "name": "ospf_multiar",
+  "nodes": {
+    "(lan:1)": {
+      "group": "tier-1",
+      "ipv4_address": "",
+      "kind": "(host bridge: ospf_multi_1)",
+      "labels": {
+        "graph-icon": "switch",
+        "graph-level": 1
+      },
+      "name": "(lan:1)"
+    },
+    "linux1": {
+      "group": "tier-1",
+      "image": "wbitt/network-multitool:latest",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.109",
+      "mgmt-ipv6-address": "",
+      "name": "linux1"
+    },
+    "linux2": {
+      "group": "tier-1",
+      "image": "wbitt/network-multitool:latest",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.110",
+      "mgmt-ipv6-address": "",
+      "name": "linux2"
+    },
+    "linux3": {
+      "group": "tier-1",
+      "image": "wbitt/network-multitool:latest",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.111",
+      "mgmt-ipv6-address": "",
+      "name": "linux3"
+    },
+    "linux4": {
+      "group": "tier-1",
+      "image": "wbitt/network-multitool:latest",
+      "kind": "linux",
+      "labels": {
+        "graph-icon": "server",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.112",
+      "mgmt-ipv6-address": "",
+      "name": "linux4"
+    },
+    "r1": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.101",
+      "mgmt-ipv6-address": "",
+      "name": "r1"
+    },
+    "r11": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.105",
+      "mgmt-ipv6-address": "",
+      "name": "r11"
+    },
+    "r2": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.102",
+      "mgmt-ipv6-address": "",
+      "name": "r2"
+    },
+    "r21": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.106",
+      "mgmt-ipv6-address": "",
+      "name": "r21"
+    },
+    "r3": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.103",
+      "mgmt-ipv6-address": "",
+      "name": "r3"
+    },
+    "r31": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.107",
+      "mgmt-ipv6-address": "",
+      "name": "r31"
+    },
+    "r4": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.104",
+      "mgmt-ipv6-address": "",
+      "name": "r4"
+    },
+    "r41": {
+      "group": "tier-1",
+      "image": "registry.iutbeziers.fr/ceos:4.33.1F",
+      "kind": "eos",
+      "labels": {
+        "graph-icon": "router",
+        "graph-level": 1
+      },
+      "mgmt-ipv4-address": "192.168.121.108",
+      "mgmt-ipv6-address": "",
+      "name": "r41"
+    }
+  },
+  "type": "clab"
+}

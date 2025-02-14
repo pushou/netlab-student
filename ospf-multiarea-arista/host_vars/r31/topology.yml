@@ -1,0 +1,67 @@
+# Ansible inventory created from ['/home/pouchou/Nextcloud/logiciels/netlab-ospf-jmp/ospf-multiarea-arista/topology.yml', 'package:topology-defaults.yml']
+#
+
+af:
+  ipv4: true
+box: registry.iutbeziers.fr/ceos:4.33.1F
+clab:
+  env:
+    CLAB_MGMT_VRF: management
+    INTFTYPE: et
+  kind: ceos
+hostname: clab-ospf_multiar-r31
+interfaces:
+- clab:
+    name: et1
+  ifindex: 1
+  ifname: Ethernet1
+  ipv4: 10.1.0.10/30
+  linkindex: 4
+  name: r31 -> r3
+  neighbors:
+  - ifname: Ethernet2
+    ipv4: 10.1.0.9/30
+    node: r3
+  ospf:
+    area: 0.0.0.3
+    network_type: point-to-point
+    passive: false
+  type: p2p
+- bridge: ospf_multi_8
+  clab:
+    name: et2
+  ifindex: 2
+  ifname: Ethernet2
+  ipv4: 172.16.3.7/24
+  linkindex: 8
+  name: r31 -> linux3
+  neighbors:
+  - ifname: eth1
+    ipv4: 172.16.3.11/24
+    node: linux3
+  ospf:
+    area: 0.0.0.0
+    network_type: point-to-point
+    passive: true
+  role: stub
+  type: lan
+loopback:
+  ifindex: 0
+  ifname: Loopback0
+  ipv4: 10.0.0.7/32
+  neighbors: []
+  ospf:
+    area: 0.0.0.0
+  type: loopback
+  virtual_interface: true
+mgmt:
+  ifname: Management0
+  ipv4: 192.168.121.107
+  mac: 08:4f:a9:00:00:07
+module:
+- ospf
+ospf:
+  af:
+    ipv4: true
+  area: 0.0.0.0
+  router_id: 10.0.0.7
